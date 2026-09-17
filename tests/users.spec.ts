@@ -13,6 +13,7 @@ test('Get all username', async ({page})=>{
         const rows= page.getByRole('table').getByRole(('row'))
         const username : string[] =[] 
         const rowCount = await rows.count()
+        console.log("Filas encontradas:", await rows.count());
 
         for (let i=1;i<rowCount;i++){
             const cell = rows.nth(i).getByRole('cell').nth(1)
@@ -34,7 +35,7 @@ test('Get all username', async ({page})=>{
         await expect (page.getByRole('link', {name:'Admin'})).toBeVisible()
         await page.getByRole('link', {name:'Admin'}).click()
         await page.getByRole('navigation').getByText('User Management').click()
-        await page.getByRole('menuitem').click()
+        await page.getByRole('menu').click()
 
         const rows= page.getByRole('table').getByRole(('row'))
         const employeeName : string[] =[] 

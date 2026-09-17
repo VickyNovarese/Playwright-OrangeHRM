@@ -6,7 +6,7 @@ test('login Orange',async({page})=>{
 
 
     const loginPage = new LoginPage(page)
-    await loginPage.login('Admin','admin123')
+    await loginPage.login(process.env.ADMIN_USERNAME!, process.env.ADMIN_PASSWORD!)
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -30,8 +30,7 @@ test('Invalid Login empty data',async({page})=>{
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     const username = page.getByRole('textbox',{name:'Username'})
-    await page.getByRole('button', {name:'Login'}).click()
-        
+    await page.getByRole('button', {name:'Login'}).click()        
     await expect (username).toHaveClass('oxd-input oxd-input--active oxd-input--error')
     await expect (page.getByText('Required').first()).toBeVisible()
     await expect (page.getByText('Required').last()).toBeVisible()    
@@ -42,9 +41,9 @@ test('Invalid Login empty data',async({page})=>{
 test('Invalid Login wrong password',async({page})=>{
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    await page.getByRole('textbox',{name:'Username'}).fill('Admin')
-    await page.getByRole('textbox',{name:'Password'}).fill('admin')
-    await page.getByRole('button', {name:'Login'}).click()
+    await page.getByRole('textbox',{name:'username'}).fill('Admin')
+    await page.getByRole('textbox',{name:'password'}).fill('admin')
+    await page.getByRole('button', {name:'login'}).click()
     const message = await page.getByRole('alert').textContent()
     expect (message).toEqual('Invalid credentials')    
     

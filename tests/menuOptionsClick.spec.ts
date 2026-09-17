@@ -74,12 +74,9 @@ test.describe("",()=>{
     })
 
 test('Verify qualifications menu options urls',async({page})=>{
-    const loginPage = new LoginPage(page)
-    await loginPage.login('Admin','admin123')    
-    await page.getByRole('link', {name:'Admin'}).click()
-    await page.getByRole('navigation').getByText('Qualifications').click()
-
     
+    await page.getByRole('navigation').getByText('Qualifications').click()
+   
     const qualificationsMenu = page.getByRole('menu').locator('li')
         
     for (let expectedEndpoint of expectedEndpointsQualifications){
@@ -94,16 +91,10 @@ test('Verify qualifications menu options urls',async({page})=>{
 
 
 test('Verify Organization menu options urls',async({page})=>{
-
-    
-    const loginPage = new LoginPage(page)
-    await loginPage.login('Admin','admin123')
-    await page.getByRole('link', {name:'Admin'}).click()
+ 
     await page.getByRole('navigation').getByText('Organization').click()
-
     
-    const organizationMenu = page.getByRole('menu').locator('li')
-        
+    const organizationMenu = page.getByRole('menu').locator('li')        
     for (let expectedEndpoint of expectedEndpointsOrganization){
 
         const menuOption = organizationMenu.filter({hasText:expectedEndpoint.menu})
@@ -116,9 +107,6 @@ test('Verify Organization menu options urls',async({page})=>{
 
 test('Verify Jobs menu options urls',async({page})=>{
 
-    const loginpage =new LoginPage(page)
-    await loginpage.login('Admin','admin123')
-    await page.getByRole('link', {name:'Admin'}).click()
     await page.getByRole('navigation').getByText('Job').click()    
     const jobsMenu = page.getByRole('menu').locator('li')
         
