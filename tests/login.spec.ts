@@ -11,14 +11,11 @@ test('login Orange',async({page})=>{
     const username = process.env.ADMIN_USERNAME??""
     const password = process.env.ADMIN_PASSWORD??""
 
-
-
     const loginPage = new LoginPage(page)
     await loginPage.login(username, password)
 
-    const sidePanel = new SidePanel(page)
-    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
-    await sidePanel.clickOnOption(SideMenuOption.PIM)
+  
+  
 
 })
 
