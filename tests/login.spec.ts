@@ -1,12 +1,17 @@
 import {test, expect} from 'playwright/test'
+import {LoginPage} from '../pageObjects/loginPage'
+import { SideMenuOption, SidePanel } from '../components/side_panel'
 
 test('login Orange',async({page})=>{
 
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    await page.getByRole('textbox',{name:'Username'}).fill('Admin')
-    await page.getByRole('textbox',{name:'Password'}).fill('admin123')
-    await page.getByRole('button', {name:'Login'}).click()
-    await expect (page.getByRole('link', {name:'Admin'})).toBeVisible()
+
+    const loginPage = new LoginPage(page)
+    await loginPage.login('Admin','admin123')
+
+    const sidePanel = new SidePanel(page)
+    await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+    await sidePanel.clickOnOption(SideMenuOption.PIM)
+
 })
 
 test('Invalid Login',async({page})=>{
