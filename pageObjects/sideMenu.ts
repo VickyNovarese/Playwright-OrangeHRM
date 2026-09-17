@@ -16,25 +16,8 @@ export class SideMenu {
   readonly claimMenu: Locator;
   readonly buzzMenu: Locator;
 
-  private menuOptions(option: sideMenuNames): Locator {
-    return this.page.getByRole("link", { name: option });
-  }
-  sideMenuNames = {
-    //Define the names of the menu options
-
-    Admin: "admin",
-    PIM: "pim",
-    Leave: "leave",
-    Time: "time",
-    Recruitment: "recruitment",
-    "My Info": "pim",
-    Performance: "performance",
-    Dashboard: "dashboard",
-    Directory: "directory",
-    Maintenance: "maintenance",
-    Claim: "claim",
-    Buzz: "buzz",
-  };
+  
+  
   constructor(page: Page) {
     this.page = page;
     this.searchInput = page.getByRole("textbox", { name: "Search" });
