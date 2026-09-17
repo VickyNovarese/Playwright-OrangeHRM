@@ -1,12 +1,20 @@
+declare const process: {
+  env: Record<string, string | undefined>
+}
+
 import {test, expect} from 'playwright/test'
 import {LoginPage} from '../pageObjects/loginPage'
 import { SideMenuOption, SidePanel } from '../components/side_panel'
 
 test('login Orange',async({page})=>{
 
+    const username = process.env.ADMIN_USERNAME??""
+    const password = process.env.ADMIN_PASSWORD??""
+
+
 
     const loginPage = new LoginPage(page)
-    await loginPage.login(process.env.ADMIN_USERNAME!, process.env.ADMIN_PASSWORD!)
+    await loginPage.login(username, password)
 
     const sidePanel = new SidePanel(page)
     await sidePanel.clickOnOption(SideMenuOption.ADMIN)
@@ -18,7 +26,7 @@ test('Invalid Login',async({page})=>{
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     await page.getByRole('textbox',{name:'Username'}).fill('Admin1')
-    await page.getByRole('textbox',{name:'Password'}).fill('admin123')
+    await page.getByRole('textbox',{name:'Password'}).fill('admin')
     await page.getByRole('button', {name:'Login'}).click()
 
     const message = await page.getByRole('alert').textContent()
