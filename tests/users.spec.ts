@@ -17,14 +17,13 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Admin' })).toBeVisible()
   await page.getByRole('link', { name: 'Admin' }).click()
   
+  
 })
 test('Get all username', async ({page})=>{
 
         
-        
-        await page.getByRole('navigation').getByText('User Management').click()
-        await page.getByRole('menuitem').click()
-
+        const topBarMenu = new TopBarMenu(page)   
+        await topBarMenu.userManagement.clickOnUsers()
         const rows= page.getByRole('table').getByRole(('row'))
         const username : string[] =[] 
         const rowCount = await rows.count()
@@ -44,10 +43,8 @@ test('Get all username', async ({page})=>{
 
     test('Get all Employee Name', async ({page})=>{
         
-    
-        await page.getByRole('navigation').getByText('User Management').click()
-        await page.getByRole('menu').click()
-
+        const topBarMenu = new TopBarMenu(page)   
+        await topBarMenu.userManagement.clickOnUsers()
         const rows= page.getByRole('table').getByRole(('row'))
         const employeeName : string[] =[] 
         const rowCount = await rows.count()
