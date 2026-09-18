@@ -54,7 +54,7 @@ test('Get all username', async ({page})=>{
     })
 
 
-    test ("Menu options using POM", async({page})=>{
+    test ("Testing Menu options using POM", async({page})=>{
 
         const loginPage = new LoginPage(page)
         await loginPage.login('Admin','admin123')
