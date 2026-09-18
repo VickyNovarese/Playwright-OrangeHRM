@@ -12,9 +12,9 @@ export class Organization{
     constructor (page:Page){
         this.page=page
         this.organizationOption= page.getByRole('navigation').getByText("Organization")
-        this.generalInformation= page.getByRole('menuitem',{name:'General Information'})
-        this.locations = page.getByRole('menuitem',{name:'Locations'})
-        this.structure = page.getByRole('menuitem',{name:'Structure'})
+        this.generalInformation= page.getByRole('menuitem',{name:"General Information"})
+        this.locations = page.getByRole('menuitem',{name:"Locations"})
+        this.structure = page.getByRole('menuitem',{name:"Structure"})
     }
 
     

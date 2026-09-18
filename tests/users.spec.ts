@@ -2,6 +2,9 @@ import{test,expect} from 'playwright/test';
 import { LoginPage } from '../pageObjects/loginPage';
 import { TopBarMenu } from '../components/topBarMenu/topBarMenu';
 
+declare const process: {
+  env: Record<string, string | undefined>
+}
 test('Get all username', async ({page})=>{
 
         const loginPage = new LoginPage(page)
@@ -55,9 +58,12 @@ test('Get all username', async ({page})=>{
 
 
     test ("Testing Menu options using POM", async({page})=>{
-
+        
+        const username = process.env.ADMIN_USERNAME??""
+        const password = process.env.ADMIN_PASSWORD??""
+        test.setTimeout(90_000)
         const loginPage = new LoginPage(page)
-        await loginPage.login('Admin','admin123')
+        await loginPage.login(username,password)
         await expect(page.getByRole('link', {name:'Admin'})).toBeVisible()
         await page.getByRole('link', {name:'Admin'}).click()
         const topBarMenu = new TopBarMenu(page)      

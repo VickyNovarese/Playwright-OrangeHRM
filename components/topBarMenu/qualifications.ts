@@ -14,11 +14,11 @@ export class Qualifications {
     constructor(page:Page) {
         this.page = page
         this.qualifications = page.getByRole('navigation').getByText("Qualifications")
-        this.skillsOption= page.getByRole('menuitem',{name:'Skills'})
-        this.educationOption = page.getByRole('menuitem',{name:'Education'})
-        this.licensesOption = page.getByRole('menuitem',{name:'Licenses'})
-        this.languagesOption = page.getByRole('menuitem',{name:'Languages'})
-        this.membershipsOption = page.getByRole('menuitem',{name:'Memberships'})
+        this.skillsOption= page.getByRole('menuitem',{name:"Skills"})
+        this.educationOption = page.getByRole('menuitem',{name:"Education"})
+        this.licensesOption = page.getByRole('menuitem',{name:"Licenses"})
+        this.languagesOption = page.getByRole('menuitem',{name:"Languages"})
+        this.membershipsOption = page.getByRole('menuitem',{name:"Memberships"})
     
     
     }

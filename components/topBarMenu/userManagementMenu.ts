@@ -8,7 +8,7 @@ export class UserManagementMenu {
 
     constructor(page: Page) {
     this.page = page;
-    this.userManagement = page.getByRole('navigation').getByText('User Management');    
+    this.userManagement = page.getByRole('navigation').getByText("User Management");    
     this.usersOption = page.getByRole("menuitem", { name: "Users" });
     }
 
