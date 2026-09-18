@@ -13,7 +13,7 @@ let topBarMenu: TopBarMenu;
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page)
-  await loginPage.login(username, password)
+  await loginPage.login('Admin', 'Admin123')
   await expect(page.getByRole('link', { name: 'Admin' })).toBeVisible()
   await page.getByRole('link', { name: 'Admin' }).click()
   
