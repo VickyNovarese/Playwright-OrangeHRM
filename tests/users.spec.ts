@@ -7,9 +7,8 @@ declare const process: {
   env: Record<string, string | undefined>
 }
 
-const username = process.env.ADMIN_USERNAME ?? ''
-const password = process.env.ADMIN_PASSWORD ?? ''
-let topBarMenu: TopBarMenu;
+
+
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page)
